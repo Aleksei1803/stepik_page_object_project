@@ -10,3 +10,17 @@ def test_guest_can_go_to_login_page(browser):
     page.solve_quiz_and_get_code()
     page.should_be_product_name()
     page.should_be_product_price()
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_login_link()
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()  # открываем страницу
+    page.should_be_login_link()
+    page.go_to_login_page()
+    page.should_be_login_link()

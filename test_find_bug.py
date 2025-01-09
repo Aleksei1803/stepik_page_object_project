@@ -18,5 +18,5 @@ def test_guest_can_add_product_to_basket(browser, link):
     product_page = ProductPage(browser, browser.current_url)
     product_page.click_add_product_to_card()
     page.solve_quiz_and_get_code()
-    page.should_be_product_name()
-    page.should_be_product_price()
+    product_page.should_be_product_name()
+    product_page.should_be_product_price()
