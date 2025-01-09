@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+class ProductPageLocators:
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages :nth-child(1) strong")
     BUTTON_ADD_PRODUCT = (By.CSS_SELECTOR, ".btn-add-to-basket")
 
 class LoginPageLocators :

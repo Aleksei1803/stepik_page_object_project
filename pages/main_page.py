@@ -23,3 +23,4 @@ class MainPage(BasePage):
         product_price = self.browser.find_element(By.CSS_SELECTOR, '[class="price_color"]')
         product_price_in_card = self.browser.find_element(By.CSS_SELECTOR, "#messages :nth-child(3) strong")
         assert product_price.text == product_price_in_card.text, "The price of the book doesn't match"
+
