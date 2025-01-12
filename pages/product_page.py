@@ -20,11 +20,11 @@ class ProductPage(BasePage):
         product_name = WebDriverWait(self.browser, 5).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, ".product_main h1"))
         )
-        product_name_in_card = self.browser.find_element(By.CSS_SELECTOR, "#messages :nth-child(1) strong")
+        product_name_in_card = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
         assert product_name.text == product_name_in_card.text, "The title of the book doesn't match"
 
     def should_be_product_price(self):
-        product_price = self.browser.find_element(By.CSS_SELECTOR, '[class="price_color"]')
-        product_price_in_card = self.browser.find_element(By.CSS_SELECTOR, "#messages :nth-child(3) strong")
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
+        product_price_in_card = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_CARD)
         assert product_price.text == product_price_in_card.text, "The price of the book doesn't match"
 

@@ -3,7 +3,6 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
 from .locators import BasePageLocators
 import math
 
@@ -70,4 +69,4 @@ class BasePage:
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user"
 
     def should_be_user_logged_in(self):
-        assert self.is_element_present(By.ID, 'logout_link'), "User is not logged in"
+        assert self.is_element_present(*BasePageLocators.LOGOUT_LINK), "User is not logged in"
