@@ -1,8 +1,5 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 
 
 class LoginPage(BasePage):
@@ -29,8 +26,6 @@ class LoginPage(BasePage):
         input_confirm_password.send_keys(password)
         button_registration = self.browser.find_element(*LoginPageLocators.BUTTON_CONFIRM)
         button_registration.click()
-        success_message = WebDriverWait(self.browser, 10).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "#messages :nth-child(1) div"))
-        )
+        success_message = self.browser.find_element(*LoginPageLocators.SUCCESS_MESSAGE)
         success_message = success_message.text
         assert "Thanks for registering!" == success_message

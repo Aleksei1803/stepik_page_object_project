@@ -1,8 +1,5 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class ProductPage(BasePage):
@@ -17,10 +14,8 @@ class ProductPage(BasePage):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should be"
 
     def should_be_product_name(self):
-        product_name = WebDriverWait(self.browser, 5).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, ".product_main h1"))
-        )
-        product_name_in_card = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
+        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
+        product_name_in_card = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_CARD)
         assert product_name.text == product_name_in_card.text, "The title of the book doesn't match"
 
     def should_be_product_price(self):
